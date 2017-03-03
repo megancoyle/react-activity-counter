@@ -1,10 +1,44 @@
-import { PropTypes } from 'react';
+import { PropTypes, Component } from 'react';
+
+const usCities = [
+  "Washington DC",
+  "San Fran",
+  "Seattle",
+  "Boston",
+  "Austin",
+  "Baltimore"
+]
+
+class Autocomplete extends Component {
+  get value() {
+    return this.refs.inputCity.value
+  }
+
+  set value(inputValue) {
+    this.refs.inputCity.value = inputValue
+  }
+  render() {
+    return (
+      <div>
+        <input ref="inputCity"
+               type="text"
+               list="list-cities" />
+        <datalist id="list-cities">
+          {this.props.options.map(
+            (opt, i) =>
+            <option key={i}>{opt}</option>)}
+        </datalist>
+      </div>
+    )
+  }
+}
 
 export const AddDayForm = ({ city,
                              date,
                              vacation,
                              business,
                              onNewDay }) => {
+
   let _city, _date, _vacation, _business
 
   const submit = (e) => {
@@ -22,12 +56,12 @@ export const AddDayForm = ({ city,
   }
 
   return (
-    <form onSubmit={submit} className="add-day-form">
-      <label htmlFor="city">City</label>
-      <input id="city"
-             type="text"
-             required
-             defaultValue={city}
+    <form onSubmit={submit}
+    className="add-day-form">
+
+      <label htmlFor="city">
+      City</label>
+      <Autocomplete options={usCities}
              ref={input => _city = input} />
 
       <label htmlFor="date">Date</label>
@@ -36,6 +70,7 @@ export const AddDayForm = ({ city,
              required
              defaultValue={date}
              ref={input => _date = input} />
+
       <div>
         <input id="vacation"
                type="checkbox"
@@ -43,6 +78,7 @@ export const AddDayForm = ({ city,
                ref={input => _vacation = input} />
         <label htmlFor="vacation">Vacation</label>
       </div>
+
       <div>
         <input id="business"
                type="checkbox"
