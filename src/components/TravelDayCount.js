@@ -1,4 +1,7 @@
 import '../stylesheets/ui.scss';
+import MdBusinessCenter from 'react-icons/lib/md/business-center';
+import MdFlight from 'react-icons/lib/md/flight';
+import Calendar from 'react-icons/lib/fa/calendar';
 
 const percentToDecimal = (decimal) => {
   return ((decimal * 100) + '%')
@@ -12,14 +15,17 @@ export const TravelDayCount = ({total, vacation, business, goal}) => (
     <div className="travel-day-count">
       <div className="total-days">
         <span>{total}</span>
+        <Calendar />
         <span>days</span>
       </div>
       <div className="vacation-days">
         <span>{vacation}</span>
+        <MdFlight />
         <span>days</span>
       </div>
       <div className="business-days">
         <span>{business}</span>
+        <MdBusinessCenter />
         <span>days</span>
       </div>
       <div>
