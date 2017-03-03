@@ -1,20 +1,34 @@
-import React from 'react';
 import '../stylesheets/ui.scss';
 
-export const TravelDayCount = React.createClass({
-  render() {
-    return (
-      <div className="travel-day-count">
-        <div className="total-days">
-          <span>5 days</span>
-        </div>
-        <div className="vacation-days">
-          <span>2 days</span>
-        </div>
-        <div className="business-days">
-          <span>1 day</span>
-        </div>
+const percentToDecimal = (decimal) => {
+  return ((decimal * 100) + '%')
+}
+
+const calcGoalProgress = (total, goal) => {
+  return percentToDecimal(total/goal)
+}
+
+export const TravelDayCount = ({total, vacation, business, goal}) => (
+    <div className="travel-day-count">
+      <div className="total-days">
+        <span>{total}</span>
+        <span>days</span>
       </div>
-    )
-  }
-})
+      <div className="vacation-days">
+        <span>{vacation}</span>
+        <span>days</span>
+      </div>
+      <div className="business-days">
+        <span>{business}</span>
+        <span>days</span>
+      </div>
+      <div>
+        <span>
+          {calcGoalProgress(
+            total,
+            goal
+          )}
+        </span>
+      </div>
+    </div>
+)
