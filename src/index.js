@@ -1,13 +1,31 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { TravelDayCount } from './components/TravelDayCount';
+import { TravelDayList } from './components/TravelDayList';
 
 window.React = React
 
 render(
-	<TravelDayCount total={50}
-									vacation={20}
-									business={10}
-									goal={100}/>,
+	<TravelDayList days={
+		[
+			{
+				city: "DC",
+				date: new Date("3/5/2017"),
+				vacation: true,
+				business: false
+			},
+			{
+				city: "San Francisco",
+				date: new Date("1/5/2017"),
+				vactaion: false,
+				business: true
+			},
+			{
+				city: "Seattle",
+				date: new Date("2/5/2017"),
+				vacation: true,
+				business: false
+			}
+		]
+	}/>,
 	document.getElementById('react-container')
 )
