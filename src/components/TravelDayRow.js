@@ -6,7 +6,7 @@ import { PropTypes } from 'react';
 export const TravelDayRow = ({city, date, vacation, business}) => (
   <tr>
     <td>
-      {date.getMonth()+1}/{date.getDate()}/{date.getFullYear()}
+      {date}
     </td>
     <td>
       {city}
@@ -22,7 +22,7 @@ export const TravelDayRow = ({city, date, vacation, business}) => (
 
 TravelDayRow.propTypes = {
   city: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.string.isRequired,
   vacation: PropTypes.bool,
   business: PropTypes.bool
 }
