@@ -1,6 +1,7 @@
 import MdBusinessCenter from 'react-icons/lib/md/business-center';
 import MdFlight from 'react-icons/lib/md/flight';
 import Calendar from 'react-icons/lib/fa/calendar';
+import { PropTypes } from 'react';
 
 export const TravelDayRow = ({city, date, vacation, business}) => (
   <tr>
@@ -18,3 +19,10 @@ export const TravelDayRow = ({city, date, vacation, business}) => (
     </td>
   </tr>
 )
+
+TravelDayRow.propTypes = {
+  city: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  vacation: PropTypes.bool,
+  business: PropTypes.bool
+}
