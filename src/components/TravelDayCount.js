@@ -11,7 +11,7 @@ const calcGoalProgress = (total, goal) => {
   return percentToDecimal(total/goal)
 }
 
-export const TravelDayCount = ({total, vacation, business, goal}) => (
+export const TravelDayCount = ({total=70, vacation=18, business=20, goal=100}) => (
     <div className="travel-day-count">
       <div className="total-days">
         <span>{total}</span>
