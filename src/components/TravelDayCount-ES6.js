@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component, PropTypes } from 'react'
 import '../stylesheets/ui.scss'
 import MdBusinessCenter from 'react-icons/lib/md/business-center';
 import MdFlight from 'react-icons/lib/md/flight';
@@ -47,4 +47,10 @@ TravelDayCount.defaultProps = {
   vacation: 10,
   business: 15,
   goal: 70
+}
+
+TravelDayCount.propTypes = {
+  total: PropTypes.number,
+  vacation: PropTypes.number,
+  business: PropTypes.number
 }

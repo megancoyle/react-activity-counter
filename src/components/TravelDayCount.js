@@ -2,6 +2,7 @@ import '../stylesheets/ui.scss';
 import MdBusinessCenter from 'react-icons/lib/md/business-center';
 import MdFlight from 'react-icons/lib/md/flight';
 import Calendar from 'react-icons/lib/fa/calendar';
+import { PropTypes } from 'react';
 
 const percentToDecimal = (decimal) => {
   return ((decimal * 100) + '%')
@@ -38,3 +39,9 @@ export const TravelDayCount = ({total=70, vacation=18, business=20, goal=100}) =
       </div>
     </div>
 )
+
+TravelDayCount.propTypes = {
+  total: PropTypes.number,
+  vacation: PropTypes.number,
+  business: PropTypes.number
+}

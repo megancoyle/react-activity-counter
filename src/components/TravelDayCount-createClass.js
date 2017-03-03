@@ -1,10 +1,15 @@
-import { createClass } from 'react'
+import { createClass, PropTypes } from 'react'
 import '../stylesheets/ui.scss'
 import MdBusinessCenter from 'react-icons/lib/md/business-center';
 import MdFlight from 'react-icons/lib/md/flight';
 import Calendar from 'react-icons/lib/fa/calendar';
 
 export const TravelDayCount = createClass({
+  propTypes: {
+    total: PropTypes.number.isRequired,
+    vacation: PropTypes.number,
+    business: PropTypes.number
+  },
   getDefaultProps() {
     return {
       total: 50,
