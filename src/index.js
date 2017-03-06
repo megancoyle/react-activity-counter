@@ -6,22 +6,27 @@ import { App } from './components/App';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
-import { goal } from './store/reducers'
+import { travelDay } from './store/reducers'
 
-const state = 10
+const state = null
 
 const action = {
-	type: C.SET_GOAL,
-	payload: 15
+	type: C.ADD_DAY,
+	payload: {
+		"city": "Washington DC",
+		"date": "2016-12-16",
+		"vacation": true,
+		"business": false
+	}
 }
 
-const nextState = goal(state, action)
+const nextState = travelDay(state, action)
 
 console.log(`
 
     initial goal: ${state}
     action: ${JSON.stringify(action)}
-    new goal: ${nextState}
+    new goal: ${JSON.stringify(nextState)}
 
 `)
 
