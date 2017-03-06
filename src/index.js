@@ -6,18 +6,22 @@ import { App } from './components/App';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
-import { allTravelDays, goal } from './initialState.json';
+import { goal } from './store/reducers'
+
+const state = 10
+
+const action = {
+	type: C.SET_GOAL,
+	payload: 15
+}
+
+const nextState = goal(state, action)
 
 console.log(`
 
-   Travel Day Counter
-   ================
-   The goal is ${goal} days
-   Initially there are ${allTravelDays.length} travel days in state
-
-   Constants (actions)
-   -------------------
-   ${Object.keys(C).join('\n     ')}
+    initial goal: ${state}
+    action: ${JSON.stringify(action)}
+    new goal: ${nextState}
 
 `)
 
