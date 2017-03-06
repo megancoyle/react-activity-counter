@@ -6,21 +6,19 @@ import { App } from './components/App';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
-import { travelDay } from './store/reducers'
+import { errors } from './store/reducers'
 
-const state = null
+const state = [
+	"user not authorized",
+	"server feed not found"
+]
 
 const action = {
-	type: C.ADD_DAY,
-	payload: {
-		"city": "Washington DC",
-		"date": "2016-12-16",
-		"vacation": true,
-		"business": false
-	}
+	type: C.CLEAR_ERROR,
+	payload: 0
 }
 
-const nextState = travelDay(state, action)
+const nextState = errors(state, action)
 
 console.log(`
 
