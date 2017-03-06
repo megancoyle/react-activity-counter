@@ -1,0 +1,28 @@
+{
+	"allTravelDays": [
+		{
+			"city": "DC",
+			"date": "2016-12-7",
+			"vacation": true,
+			"business": false
+		},
+		{
+			"city": "San Jose",
+			"date": "2016-12-8",
+			"vacation": false,
+			"business": false
+		},
+		{
+			"city": "Boston",
+			"date": "2016-12-9",
+			"vacation": false,
+			"business": true
+		}
+	],
+	"goal": 10,
+	"errors": [],
+	"resortNames": {
+		"fetching": false,
+		"suggestions": ["San Jose", "San Francisco", "San Antonio", "Santa Monica"]
+	}
+}
