@@ -6,23 +6,33 @@ import { App } from './components/App';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
-import { errors } from './store/reducers'
+import { allTravelDays } from './store/reducers'
 
-const state = [
-	"user not authorized",
-	"server feed not found"
+const state= [
+	{
+		"city": "DC",
+		"date": "2016-13-15",
+		"vacation": true,
+		"business": false
+	},
+	{
+		"city": "San Jose",
+		"date": "2016-12-16",
+		"vacation": false,
+		"business": true
+	}
 ]
 
 const action = {
-	type: C.CLEAR_ERROR,
-	payload: 0
+	type: C.REMOVE_DAY,
+	payload: "2016-12-16"
 }
 
-const nextState = errors(state, action)
+const nextState = allTravelDays(state, action)
 
 console.log(`
 
-    initial goal: ${state}
+    initial goal: ${JSON.stringify(state)}
     action: ${JSON.stringify(action)}
     new goal: ${JSON.stringify(nextState)}
 

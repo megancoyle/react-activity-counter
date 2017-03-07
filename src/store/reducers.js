@@ -9,21 +9,32 @@ export const travelDay = (state=null, action) =>
   export const errors = (state=[], action) => {
 
     switch(action.type) {
-
       case C.ADD_ERROR :
-
       	return [
            ...state,
            action.payload
       	]
-
       case C.CLEAR_ERROR :
-
         return state.filter((message, i) => i !== action.payload)
-
     	default:
     		return state
-
     }
-
   }
+
+export const allTravelDays = (state=[], action) => {
+  switch(action.type) {
+    case C.ADD_DAY :
+      const hasDay = state.some(travelDay => travelDay.date === action.payload.date)
+      return (hasDay) ?
+        state :
+        [
+          ...state,
+          travelDay(null, action)
+        ].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+        case C.REMOVE_DAY :
+          return state.filter(travelDay => travelDay.date !== action.payload)
+    default:
+      return state
+  }
+}
