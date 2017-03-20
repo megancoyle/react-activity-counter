@@ -8,28 +8,14 @@ import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
 import appReducer from './store/reducers';
 import initialState from './initialState.json';
+import { createStore } from 'redux';
 import { allTravelDays } from './store/reducers'
 
-let state = initialState;
+const store = createStore(appReducer, initialState)
 
-console.log(`
+console.log('initial state', store.getState())
 
-	Initial state
-
-	goal: ${state.goal}
-	resorts: ${JSON.stringify(state.allTravelDays)}
-	fetching: ${state.cityNames.fetching}
-	suggestions: ${state.cityNames.suggestions}
-
-
-`)
-
-state = appReducer(state, {
-	type: C.SET_GOAL,
-	payload: 2
-})
-
-state = appReducer(state, {
+store.dispatch({
 	type: C.ADD_DAY,
 	payload: {
 		"city": "San Diego",
@@ -39,22 +25,7 @@ state = appReducer(state, {
 	}
 })
 
-state = appReducer(state, {
-	type: C.CHANGE_SUGGESTIONS,
-	payload: ["San Francisco", "DC", "Baltimore"]
-})
-
-console.log(`
-
-	Next state
-
-	goal: ${state.goal}
-	resorts: ${JSON.stringify(state.allTravelDays)}
-	fetching: ${state.cityNames.fetching}
-	suggestions: ${state.cityNames.suggestions}
-
-
-`)
+console.log('next', store.getState())
 
 // const state= [
 // 	{
