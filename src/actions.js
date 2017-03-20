@@ -60,4 +60,19 @@ export const suggestCityNames = value => dispatch => {
     type: C.FETCH_CITY_NAMES
   })
   fetch('http://localhost:3333/cities/' + value)
+  .then(response => response.json())
+  .then(suggestions => {
+    dispatch({
+      type: C.CHANGE_SUGGESTIONS,
+      payload: suggestions
+    })
+  })
+  .catch(error => {
+    dispatch(
+      addError(error.message)
+    )
+    dispatch({
+      type: C.CANCEL_FETCHING
+    })
+  })
 }
