@@ -1,31 +1,34 @@
-import C from '../constants';
-import appReducer from './reducers';
-import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import C from '../constants'
+import appReducer from './reducers'
+import thunk from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux'
 
 const consoleMessages = store => next => action => {
-  let result
 
-  console.groupCollapsed(`dispatching action => ${action.type}`)
-  console.log('travel days', store.getState().allTravelDays.length)
+	let result
 
-  let { allTravelDays, goal, errors, cityNames } = store.getState()
+	console.groupCollapsed(`dispatching action => ${action.type}`)
+	console.log('travel days', store.getState().allTravelDays.length)
+	result = next(action)
 
-  console.log(`
+	let { allTravelDays, goal, errors, cityNames } = store.getState()
 
-    travel days: ${allTravelDays.length}
-    goals: ${goal}
-    fetching: ${cityNames.fetching}
-    suggestions: ${cityNames.suggestions}
-    errors: ${errors.length}
+	console.log(`
 
-  `)
-  console.groupEnd()
+		travel days: ${allTravelDays.length}
+		goal: ${goal}
+		fetching: ${cityNames.fetching}
+		suggestions: ${cityNames.suggestions}
+		errors: ${errors.length}
 
-  return result
+	`)
+
+	console.groupEnd()
+
+	return result
 
 }
 
 export default (initialState={}) => {
-  return applyMiddleware(thunk, consoleMessages)(createStore)(appReducer, initialState)
+	return applyMiddleware(thunk,consoleMessages)(createStore)(appReducer, initialState)
 }
