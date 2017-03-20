@@ -6,12 +6,13 @@ import { App } from './components/App';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import storeFactory from './store';
+import { suggestCityNames } from './actions';
 import { randomGoals } from './actions';
 
 const store = storeFactory()
 
 store.dispatch(
-	randomGoals()
+	suggestCityNames("san")
 )
 
 // const state= [

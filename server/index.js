@@ -3,8 +3,8 @@ const cities = require('./city-names.json')
 const { port=3333, delay=0 } = require('minimist')(process.argv)
 const cors = require('cors')
 
-const byName = name => resort =>
-    name.toLowerCase() === resort.substr(0, name.length).toLowerCase()
+const byName = name => city =>
+    name.toLowerCase() === city.substr(0, name.length).toLowerCase()
 
 const logger = (req, res, next) => {
     console.log(`${req.method} request for ${req.url}`)
@@ -16,12 +16,12 @@ const app = express()
     .use(cors())
     .use('/', express.static('./dist/img'))
     .get('/cities', (req, res) =>
-        res.status(200).json(resorts)
+        res.status(200).json(cities)
     )
     .get('/cities/:name', (req, res) =>
         setTimeout(() =>
                 res.status(200).json(
-                    resorts.filter(byName(req.params.name))
+                    cities.filter(byName(req.params.name))
                 ),
             delay
         )

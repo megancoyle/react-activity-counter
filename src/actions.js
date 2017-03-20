@@ -1,4 +1,5 @@
 import C from './constants';
+import fetch from 'isomorphic-fetch';
 
 export function addDay(city, date, vacation=false, business=false) {
 
@@ -52,4 +53,11 @@ export const randomGoals = () => (dispatch, getState) => {
       })
     }, 1500)
   }
+}
+
+export const suggestCityNames = value => dispatch => {
+  dispatch({
+    type: C.FETCH_CITY_NAMES
+  })
+  fetch('http://localhost:3333/cities/' + value)
 }
