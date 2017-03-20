@@ -6,37 +6,85 @@ import { App } from './components/App';
 import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
+import appReducer from './store/reducers';
+import initialState from './initialState.json';
 import { allTravelDays } from './store/reducers'
 
-const state= [
-	{
-		"city": "DC",
-		"date": "2016-13-15",
-		"vacation": true,
-		"business": false
-	},
-	{
-		"city": "San Jose",
-		"date": "2016-12-16",
-		"vacation": false,
-		"business": true
-	}
-]
-
-const action = {
-	type: C.REMOVE_DAY,
-	payload: "2016-12-16"
-}
-
-const nextState = allTravelDays(state, action)
+let state = initialState;
 
 console.log(`
 
-    initial goal: ${JSON.stringify(state)}
-    action: ${JSON.stringify(action)}
-    new goal: ${JSON.stringify(nextState)}
+	Initial state
+
+	goal: ${state.goal}
+	resorts: ${JSON.stringify(state.allTravelDays)}
+	fetching: ${state.cityNames.fetching}
+	suggestions: ${state.cityNames.suggestions}
+
 
 `)
+
+state = appReducer(state, {
+	type: C.SET_GOAL,
+	payload: 2
+})
+
+state = appReducer(state, {
+	type: C.ADD_DAY,
+	payload: {
+		"city": "San Diego",
+		"date": "2016-10-28",
+		"vacation": true,
+		"business": false
+	}
+})
+
+state = appReducer(state, {
+	type: C.CHANGE_SUGGESTIONS,
+	payload: ["San Francisco", "DC", "Baltimore"]
+})
+
+console.log(`
+
+	Next state
+
+	goal: ${state.goal}
+	resorts: ${JSON.stringify(state.allTravelDays)}
+	fetching: ${state.cityNames.fetching}
+	suggestions: ${state.cityNames.suggestions}
+
+
+`)
+
+// const state= [
+// 	{
+// 		"city": "DC",
+// 		"date": "2016-13-15",
+// 		"vacation": true,
+// 		"business": false
+// 	},
+// 	{
+// 		"city": "San Jose",
+// 		"date": "2016-12-16",
+// 		"vacation": false,
+// 		"business": true
+// 	}
+// ]
+//
+// const action = {
+// 	type: C.REMOVE_DAY,
+// 	payload: "2016-12-16"
+// }
+//
+// const nextState = allTravelDays(state, action)
+//
+// console.log(`
+//
+//     initial goal: ${JSON.stringify(state)}
+//     action: ${JSON.stringify(action)}
+//     new goal: ${JSON.stringify(nextState)}
+//
+// `)
 
 // window.React = React
 //

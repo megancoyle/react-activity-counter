@@ -40,14 +40,47 @@ export const allTravelDays = (state=[], action) => {
   }
 }
 
-const cityNames = combineReducers({
-  fetching,
-  suggestions
-})
+export const fetching = (state=false, action) => {
 
-const singleReducer = combineReducers({
+  switch(action.type) {
+
+    case C.FETCH_CITY_NAMES :
+      return true
+
+    case C.CANCEL_FETCHING :
+      return false
+
+    case C.CHANGE_SUGGESTIONS :
+      return false
+
+    default:
+      return state
+  }
+
+}
+
+export const suggestions = (state=[], action) => {
+
+  switch(action.type) {
+
+    case C.CLEAR_SUGGESTIONS :
+      return []
+
+    case C.CHANGE_SUGGESTIONS :
+      return action.payload
+
+    default :
+      return state
+  }
+
+}
+
+export default combineReducers({
   allTravelDays,
   goal,
   errors,
-  cityNames
+  cityNames: combineReducers({
+    fetching,
+    suggestions
+  })
 })
