@@ -31,8 +31,8 @@ const TravelDayList = ({ days, filter, onRemoveDay=f=>f }) => {
                 <tr>
                     <td colSpan={4}>
                         <Link to="/list-days" style={(!filter) ? activeFilterStyle : null}>All Days</Link>
-                        <Link to="/list-days/vacation" activeStyle={activeFilterStyle}>Powder Days</Link>
-                        <Link to="/list-days/business" activeStyle={activeFilterStyle}>Backcountry Days</Link>
+                        <Link to="/list-days/vacation" activeStyle={activeFilterStyle}>Vacation Days</Link>
+                        <Link to="/list-days/business" activeStyle={activeFilterStyle}>Business Days</Link>
                     </td>
                 </tr>
                 </thead>

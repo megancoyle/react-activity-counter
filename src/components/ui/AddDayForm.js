@@ -32,7 +32,7 @@ const AddDayForm = ({ suggestions=[], onNewDay=f=>f, onChange=f=>f, onClear=f=>f
     return (
         <form onSubmit={submit} className="add-day">
 
-            <label htmlFor="date">Resort Name</label>
+            <label htmlFor="date">City Name</label>
 
             <Autocomplete ref={input => _city = input}
                           suggestions={suggestions}
@@ -61,7 +61,9 @@ const AddDayForm = ({ suggestions=[], onNewDay=f=>f, onChange=f=>f, onClear=f=>f
                 <label htmlFor="business-day">Business</label>
             </div>
 
-            <button>Add Day</button>
+            <button>
+              Add Day
+            </button>
 
         </form>
     )
