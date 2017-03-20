@@ -7,25 +7,17 @@ import { Whoops404 } from './components/Whoops404';
 import { Router, Route, hashHistory } from 'react-router';
 import C from './constants';
 import appReducer from './store/reducers';
-import initialState from './initialState.json';
 import { createStore } from 'redux';
 import { allTravelDays } from './store/reducers'
 
+const initialState = (localStorage['redux-store']) ? JSON.parse(localStorage['redux-store']) : {}
+
 const store = createStore(appReducer, initialState)
 
-console.log('initial state', store.getState())
-
-store.dispatch({
-	type: C.ADD_DAY,
-	payload: {
-		"city": "San Diego",
-		"date": "2016-10-28",
-		"vacation": true,
-		"business": false
-	}
+store.subscribe(() => {
+	const state = JSON.stringify(store.getState())
+	localStorage['redux-store'] = state
 })
-
-console.log('next', store.getState())
 
 // const state= [
 // 	{
