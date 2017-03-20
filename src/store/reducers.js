@@ -8,7 +8,6 @@ export const travelDay = (state=null, action) =>
   (action.type === C.ADD_DAY) ? action.payload : state
 
   export const errors = (state=[], action) => {
-
     switch(action.type) {
       case C.ADD_ERROR :
       	return [
