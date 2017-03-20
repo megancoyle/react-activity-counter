@@ -1,18 +1,10 @@
-import '../stylesheets/ui.scss';
+import { PropTypes } from 'react'
 import MdBusinessCenter from 'react-icons/lib/md/business-center';
 import MdFlight from 'react-icons/lib/md/flight';
 import Calendar from 'react-icons/lib/fa/calendar';
-import { PropTypes } from 'react';
+import '../../stylesheets/TravelDayCount.scss'
 
-const percentToDecimal = (decimal) => {
-  return ((decimal * 100) + '%')
-}
-
-const calcGoalProgress = (total, goal) => {
-  return percentToDecimal(total/goal)
-}
-
-export const TravelDayCount = ({total=70, vacation=18, business=20, goal=100}) => (
+export const TravelDayCount = ({total=0, vacation=0, business=0}) => (
     <div className="travel-day-count">
       <div className="total-days">
         <span>{total}</span>
@@ -29,14 +21,6 @@ export const TravelDayCount = ({total=70, vacation=18, business=20, goal=100}) =
         <MdBusinessCenter />
         <span>days</span>
       </div>
-      <div>
-        <span>
-          {calcGoalProgress(
-            total,
-            goal
-          )}
-        </span>
-      </div>
     </div>
 )
 
@@ -45,3 +29,5 @@ TravelDayCount.propTypes = {
   vacation: PropTypes.number,
   business: PropTypes.number
 }
+
+export default TravelDayCount;

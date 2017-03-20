@@ -60,3 +60,5 @@ TravelDayList.propTypes = {
     }
   }
 }
+
+export default TravelDayList;

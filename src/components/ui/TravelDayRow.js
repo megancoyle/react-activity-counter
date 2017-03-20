@@ -4,7 +4,7 @@ import Calendar from 'react-icons/lib/fa/calendar';
 import { PropTypes } from 'react';
 
 export const TravelDayRow = ({city, date, vacation, business}) => (
-  <tr>
+  <tr onDoubleClick={() => onRemoveDay(date)}>
     <td>
       {date}
     </td>
@@ -26,3 +26,5 @@ TravelDayRow.propTypes = {
   vacation: PropTypes.bool,
   business: PropTypes.bool
 }
+
+export default TravelDayRow;
