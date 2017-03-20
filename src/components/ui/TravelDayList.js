@@ -4,6 +4,7 @@ import Calendar from 'react-icons/lib/fa/calendar';
 import { TravelDayRow } from './TravelDayRow';
 import { PropTypes } from 'react';
 import { Link } from 'react-router';
+import '../../stylesheets/TravelDayList.scss'
 
 export const TravelDayList = ({days, filter}) => {
   const filteredDays = (!filter || !filter.match(/vacation|business/)) ?
