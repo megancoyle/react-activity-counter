@@ -21,7 +21,7 @@
 	],
 	"goal": 10,
 	"errors": [],
-	"resortNames": {
+	"cityNames": {
 		"fetching": false,
 		"suggestions": ["San Jose", "San Francisco", "San Antonio", "Santa Monica"]
 	}
